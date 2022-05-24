@@ -11,9 +11,6 @@ export function PrevSingle(props) {
       <div className="card-body">
         <div className="small text-muted">{props.createdAt}</div>
         <h2 className="card-title">{props.description}</h2>
-        <p className="card-text">
-        {props.content}
-        </p>
         <a className="btn btn-primary" href="#!">
           Read more →
         </a>
