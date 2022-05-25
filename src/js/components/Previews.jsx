@@ -4,47 +4,60 @@ import { parse } from "preact-parser";
 import { PrevSingle } from "./PrevSingle";
 // main();
 
-function Featured({data}) {
-  console.log(data);
-  return <PrevSingle content="html here" createdAt={data.createdAt} description={data.description}/>
-}
+// const Featured = ({ createdAt, description }) => (
+//   <PrevSingle
+//     content="html here"
+//     createdAt={createdAt}
+//     description={description}
+//   />
+// );
 
 export function Previews() {
   const [data, setData] = useState([]);
 
-    useEffect(() => {
-      getData();
-    }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
-    async function getData() {
-      let url =
-        "https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog";
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Network response was not OK");
-      const json = await response.json();
-      const Data = await json.gistBlog;
-      // console.log(Data);
-      setData(Data);
-    }
+  async function getData() {
+    let url =
+      "https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog";
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Network response was not OK");
+    const json = await response.json();
+    const Data = await json.gistBlog;
+    setData(Data);
+  }
 
-   console.log(Array.isArray(data))
+  console.log(data[0]);
 
   return (
     <div class="row">
-    <div class="col-lg-8 offset-lg-2" >
-      <Featured data={data}/>
+      <div class="col-lg-8 offset-lg-2">
+      <PrevSingle {...data[0]} />
         <div class="row">
-      <div class="col-lg-6">
-        <PrevSingle content="html here" createdAt="20.20.20" description="A desc here."/>
-        <PrevSingle content="html here" createdAt="20.20.20" description="A desc here."/>
-      </div>
-      <div class="col-lg-6">
-        <PrevSingle content="html here" createdAt="20.20.20" description="A desc here."/>
-        <PrevSingle content="html here" createdAt="20.20.20" description="A desc here."/>
+          <div class="col-lg-6">
+            <PrevSingle {...data[1]} />
+            <PrevSingle
+              content="html here"
+              createdAt="20.20.20"
+              description="A desc here."
+            />
+          </div>
+          <div class="col-lg-6">
+            <PrevSingle
+              content="html here"
+              createdAt="20.20.20"
+              description="A desc here."
+            />
+            <PrevSingle
+              content="html here"
+              createdAt="20.20.20"
+              description="A desc here."
+            />
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-</div>
-
   );
 }
