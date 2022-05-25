@@ -14,6 +14,7 @@ import { PrevSingle } from "./PrevSingle";
 
 export function Previews() {
   const [data, setData] = useState([]);
+  const [featuredData, ...notFeatured] = data
 
   useEffect(() => {
     getData();
@@ -29,32 +30,17 @@ export function Previews() {
     setData(Data);
   }
 
-  console.log(data[0]);
-
+  // const itemRet = (item) => <PrevSingle {...item} />
   return (
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
-      <PrevSingle {...data[0]} />
+      <PrevSingle {...featuredData} />
         <div class="row">
           <div class="col-lg-6">
-            <PrevSingle {...data[1]} />
-            <PrevSingle
-              content="html here"
-              createdAt="20.20.20"
-              description="A desc here."
-            />
+            {notFeatured.map(item => <PrevSingle {...item} />)}
           </div>
           <div class="col-lg-6">
-            <PrevSingle
-              content="html here"
-              createdAt="20.20.20"
-              description="A desc here."
-            />
-            <PrevSingle
-              content="html here"
-              createdAt="20.20.20"
-              description="A desc here."
-            />
+
           </div>
         </div>
       </div>
