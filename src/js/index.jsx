@@ -1,7 +1,6 @@
 import { h, render, Component, createContext } from "preact";
 import { useContext } from "preact/hooks";
 import { parse } from "preact-parser";
-import { marked } from "marked";
 // import {Preview} from "./components/Preview";
 import {Previews} from "./components/Previews";
 

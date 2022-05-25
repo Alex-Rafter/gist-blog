@@ -2,15 +2,7 @@ import { h, render, Component, createContext } from "preact";
 import { useContext, useEffect, useState } from "preact/hooks";
 import { parse } from "preact-parser";
 import { PrevSingle } from "./PrevSingle";
-// main();
-
-// const Featured = ({ createdAt, description }) => (
-//   <PrevSingle
-//     content="html here"
-//     createdAt={createdAt}
-//     description={description}
-//   />
-// );
+import { showBodyEl } from "../helpers/show-body-el";
 
 export function Previews() {
   const [data, setData] = useState([]);
@@ -27,33 +19,23 @@ export function Previews() {
     if (!response.ok) throw new Error("Network response was not OK");
     const json = await response.json();
     const Data = await json.gistBlog;
-    setData(Data);
+    setData(Data)
   }
 
-  const returnCorrectEls = (index, pos, el) => {
-    if (! index < pos) return 
-    return el
-  }
 
-  // const itemRet = (item) => <PrevSingle {...item} />
+  (data.length > 0) && showBodyEl()
+  const returnCorrectEls = (index, pos, el) => (index < pos) && el
+
   return (
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
         <PrevSingle {...featuredData} />
         <div class="row">
           <div class="col-lg-6">
-          {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item}/>))}
-          {/* {notFeatured.map((item, i) => {
-            if (i < 1) {
-              return <PrevSingle {...item} />}
-            })}             */}
-            {/* {notFeatured.map(item => <PrevSingle {...item} />)} */}
+            {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
           </div>
           <div class="col-lg-6">
-            {/* {notFeatured.map((item, i) => {
-            if (i > 1) {
-              <PrevSingle {...item} />}
-            })} */}
+            {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
           </div>
         </div>
       </div>
