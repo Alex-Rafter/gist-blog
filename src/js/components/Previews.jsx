@@ -30,17 +30,30 @@ export function Previews() {
     setData(Data);
   }
 
+  const returnCorrectEls = (index, pos, el) => {
+    if (! index < pos) return 
+    return el
+  }
+
   // const itemRet = (item) => <PrevSingle {...item} />
   return (
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
-      <PrevSingle {...featuredData} />
+        <PrevSingle {...featuredData} />
         <div class="row">
           <div class="col-lg-6">
-            {notFeatured.map(item => <PrevSingle {...item} />)}
+          {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item}/>))}
+          {/* {notFeatured.map((item, i) => {
+            if (i < 1) {
+              return <PrevSingle {...item} />}
+            })}             */}
+            {/* {notFeatured.map(item => <PrevSingle {...item} />)} */}
           </div>
           <div class="col-lg-6">
-
+            {/* {notFeatured.map((item, i) => {
+            if (i > 1) {
+              <PrevSingle {...item} />}
+            })} */}
           </div>
         </div>
       </div>
