@@ -1,35 +1,26 @@
 import { h, render, Component, createContext } from "preact";
-import { useContext } from "preact/hooks";
-import { parse } from "preact-parser";
-// import {Preview} from "./components/Preview";
-import {Previews} from "./components/Previews";
+import { useContext, useEffect, useState } from "preact/hooks";
 
-// async function main() {
-//   let url = "https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog"
-//   const response = await fetch(url);
-//   if (!response.ok) throw new Error('Network response was not OK')
-//   const json = await response.json();
-//   const Data = await createContext(json.gistBlog[0].content);
+import { Previews } from "./components/Previews";
+import { Nav } from "./components/Nav";
+import { Header } from "./components/Header"
+import { Footer } from "./components/Footer";
 
-//   function Markdown({ className }) {
-//     const MD = marked.parse(useContext(Data));
-//     const HTML = parse(MD);
-//     return (
-//       <div id="topLevel" className={className}>
-//         {HTML}
-//       </div>
-//     );
-//   }
+const Main = () => {
 
-//   function Component1() {
-//     return <Markdown className="tst" />;
-//   }
+const [rootDisplay, setRootDisplay] = useState('d-none')
+    useEffect(() => {
+            setRootDisplay('')        
+      }, []);
 
-//   const root = document.querySelector("#root");
-//   render(<Component1 />, root);
-// }
+    return (
+        <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
+            <Nav />
+            <Previews />
+            <Footer />
+        </div>
+    )
+}
 
-// main();
-
-const root = document.querySelector("#testLocation");
-render(<Previews/>, root);
+const root = document.querySelector("#root");
+render(< Main/>, root);

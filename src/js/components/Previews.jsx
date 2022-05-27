@@ -22,8 +22,7 @@ export function Previews() {
     setData(Data)
   }
 
-
-  (data.length > 0) && showBodyEl()
+  // (data.length > 0) && showBodyEl()
   const returnCorrectEls = (index, pos, el) => (index < pos) && el
 
   return (
