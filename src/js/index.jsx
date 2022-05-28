@@ -6,21 +6,37 @@ import { Nav } from "./components/Nav";
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer";
 
-const Main = () => {
+export const BlogContext = createContext()
 
-const [rootDisplay, setRootDisplay] = useState('d-none')
+const Main = () => {
+    const [data, setData] = useState([]);
+    const [rootDisplay, setRootDisplay] = useState('d-none')    
+    
     useEffect(() => {
-            setRootDisplay('')        
-      }, []);
+        getData();
+    }, []);
+
+    async function getData() {
+        let url =
+            "https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog";
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Network response was not OK");
+        const json = await response.json();
+        const Data = await json.gistBlog;
+        setData(Data)
+        setRootDisplay('');
+    }
 
     return (
-        <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
-            <Nav />
-            <Previews />
-            <Footer />
-        </div>
+        <BlogContext.Provider value={data}>
+            <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
+                <Nav />
+                <Previews data={data}/>
+                <Footer />
+            </div>
+        </BlogContext.Provider>
     )
 }
 
 const root = document.querySelector("#root");
-render(< Main/>, root);
+render(< Main />, root);
