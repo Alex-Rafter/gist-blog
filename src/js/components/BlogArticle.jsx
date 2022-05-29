@@ -17,7 +17,6 @@ export function BlogArticle({descPassed}) {
     if (!response.ok) throw new Error("Network response was not OK");
     const json = await response.json();
     const Data = await json.gistBlog.map(item => item.description(descPassed))[0]
-    console.log('running')
     setData(Data);
   }
 

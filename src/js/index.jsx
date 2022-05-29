@@ -35,7 +35,7 @@ const Main = () => {
             <Nav />
             <Router>
                 <Previews path="/" data={data}/>
-                <Article path="/a" data={data}/>
+                {data.map((article, index) => <Article path={`/${String(article.description).replace(/\s/g, '-').replace(/\-#.*/, '')}`} data={data} description={article.description} content={article.content}/>)}
             </Router>
             <Footer />
         </div>
