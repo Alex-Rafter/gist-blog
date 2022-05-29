@@ -24,18 +24,17 @@ const Main = () => {
         if (!response.ok) throw new Error("Network response was not OK");
         const json = await response.json();
         const Data = await json.gistBlog;
-        console.log('running');
         setData(Data)
         setRootDisplay('');
     }
-    
+   const x = item =>  String(item.description).replace(/\s/g, '-').replace(/\-#.*/, '')
     return (        
         <BlogContext.Provider value={data}>
         <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
             <Nav />
             <Router>
                 <Previews path="/" data={data}/>
-                {data.map((article, index) => <Article path={`/${String(article.description).replace(/\s/g, '-').replace(/\-#.*/, '')}`} data={data} description={article.description} content={article.content}/>)}
+                {data.map((article) => <Article path={`/${x(article)}`} {...article}/>)}
             </Router>
             <Footer />
         </div>
