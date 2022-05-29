@@ -35,7 +35,7 @@ const Main = () => {
             <Nav />
             <Router>
                 <Previews path="/" data={data}/>
-                <Article path="/article" data={data}/>
+                <Article path="/a" data={data}/>
             </Router>
             <Footer />
         </div>
