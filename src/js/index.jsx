@@ -5,6 +5,9 @@ import { Nav } from "./components/Nav"
 import { Footer } from "./components/Footer"
 import { Previews } from './components/Previews';
 import { Article } from "./pages/Article";
+import { createHashHistory } from 'history';
+
+
 /** @jsx h */
 export const BlogContext = createContext()
 
@@ -24,6 +27,7 @@ const Main = () => {
         if (!response.ok) throw new Error("Network response was not OK");
         const json = await response.json();
         const Data = await json.gistBlog;
+        console.log(Data)
         setData(Data)
         setRootDisplay('');
     }
@@ -32,14 +36,13 @@ const Main = () => {
         <BlogContext.Provider value={data}>
         <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
             <Nav />
-            <Router>
+            <Router history={createHashHistory()}>
                 <Previews path="/" data={data}/>
                 {data.map((article) => <Article path={`/${x(article)}`} {...article}/>)}
             </Router>
             <Footer />
         </div>
         </BlogContext.Provider>
-
     )
 }
 
