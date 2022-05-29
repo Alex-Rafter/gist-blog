@@ -1,7 +1,7 @@
 import { h, render, Component, createContext } from "preact";
 import { useContext, useEffect, useState } from "preact/hooks";
 import { PrevSingle } from "./PrevSingle";
-import { BlogContext } from "../pages/Home"
+import { BlogContext } from "../index"
 
 export function Previews() {
   const [featuredData, ...notFeatured] = useContext(BlogContext);
