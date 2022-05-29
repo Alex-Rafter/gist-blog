@@ -11,7 +11,7 @@ export function PrevSingle({createdAt, description}) {
       <div className="card-body">
         <div className="small text-muted">{createdAt}</div>
         <h2 className="card-title">{description}</h2>
-        <a className="btn btn-primary" href="#!">
+        <a className="btn btn-primary" href={`/article?${description}`}>
           Read more →
         </a>
       </div>

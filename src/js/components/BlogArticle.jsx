@@ -2,12 +2,9 @@ import { h, render, Component, createContext } from "preact";
 import { useContext, useEffect, useState } from "preact/hooks";
 import { parse } from "preact-parser";
 
-// main();
+export function BlogArticle({descPassed}) {
 
-
-export function Preview() {
-
-const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     getData();
@@ -19,23 +16,14 @@ const [data, setData] = useState({});
     const response = await fetch(url);
     if (!response.ok) throw new Error("Network response was not OK");
     const json = await response.json();
-    const Data = await json.gistBlog[0];
-    console.log(Data);
+    const Data = await json.gistBlog.map(item => item.description(descPassed))[0]
+    console.log('running')
     setData(Data);
   }
 
   return (
-    <div className="card mb-4">
-      <div className="card-body">
-        <div className="small text-muted">{data.createdAt}</div>
-        <h2 className="card-title">{data.description}</h2>
-        <p className="card-text">
-        {parse(data.content)}
-        </p>
-        <a className="btn btn-primary" href="#!">
-          Read more →
-        </a>
-      </div>
+    <div class="container">
+      {parse(data.content)}
     </div>
   );
 }

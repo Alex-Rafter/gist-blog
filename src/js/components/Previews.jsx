@@ -1,14 +1,10 @@
 import { h, render, Component, createContext } from "preact";
 import { useContext, useEffect, useState } from "preact/hooks";
-import { parse } from "preact-parser";
 import { PrevSingle } from "./PrevSingle";
-import { showBodyEl } from "../helpers/show-body-el";
-import { BlogContext } from "../index";
+import { BlogContext } from "../pages/Home"
 
 export function Previews() {
   const [featuredData, ...notFeatured] = useContext(BlogContext);
-
-  // (data.length > 0) && showBodyEl()
   const returnCorrectEls = (index, pos, el) => (index < pos) && el
 
   return (
