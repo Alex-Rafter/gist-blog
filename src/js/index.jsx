@@ -14,7 +14,6 @@ export const BlogContext = createContext()
 const Main = () => {
 
     const [data, setData] = useState([]);
-    const [rootDisplay, setRootDisplay] = useState('d-none')
 
     useEffect(() => {
         getData();
@@ -29,19 +28,14 @@ const Main = () => {
         const Data = await json.gistBlog;
         console.log(Data)
         setData(Data)
-        setRootDisplay('');
     }
    const x = item =>  String(item.description).replace(/\s/g, '-').replace(/\-#.*/, '')
     return (        
         <BlogContext.Provider value={data}>
-        <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
-            <Nav />
             <Router history={createHashHistory()}>
                 <Previews path="/" data={data}/>
                 {data.map((article) => <Article path={`/${x(article)}`} {...article}/>)}
             </Router>
-            <Footer />
-        </div>
         </BlogContext.Provider>
     )
 }
