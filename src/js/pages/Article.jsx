@@ -3,15 +3,12 @@ import { useContext, useEffect, useState } from "preact/hooks";
 import { parse } from "preact-parser";
 
 export function Article({ id }) {
-    console.log("hello")
-
     const [data, setData] = useState([]);
     useEffect(() => {
         getData();
     }, []);
 
     async function getData() {
-        // if (id === undefined) console.log(`no id!`)        
         let url =
             `https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog/${id}`;
         const response = await fetch(url);
