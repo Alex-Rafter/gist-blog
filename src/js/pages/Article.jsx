@@ -7,12 +7,10 @@ import { parse } from "preact-parser";
 export function Article({ id }) {
     const [rootDisplay, setRootDisplay] = useState('d-none')
     const [data, setData] = useState([]);
-    
+
     useEffect(() => {
         getData();
     }, []);
-
-
 
     async function getData() {
         let url =
@@ -25,10 +23,7 @@ export function Article({ id }) {
         setRootDisplay('');
     }
 
-
     return (
-
-
         <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
             <Nav />
             <div class="container">
@@ -36,7 +31,5 @@ export function Article({ id }) {
             </div>
             <Footer />
         </div>
-
-
     );
 }

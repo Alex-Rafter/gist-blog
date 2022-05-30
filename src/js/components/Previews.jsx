@@ -11,9 +11,8 @@ export function Previews() {
   const returnCorrectEls = (index, pos, el) => (index < pos) && el
 
     useEffect(() => {    
-  }, []);
-
-  if (featuredData) setRootDisplay('');
+      if (featuredData) setRootDisplay('');
+  }, [featuredData]);
 
   return (
     <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
