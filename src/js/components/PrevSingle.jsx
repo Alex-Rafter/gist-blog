@@ -22,6 +22,7 @@ export function PrevSingle({ createdAt, description, url, id, index }) {
     if (!response.ok) throw new Error("Network response was not OK");
     const json = await response.json();
     const Data = await json.gistBlog;
+    if (sessionStorage.getItem("article")) sessionStorage.removeItem("article") 
     sessionStorage.setItem("article", JSON.stringify(Data));
   }
 
