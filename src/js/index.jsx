@@ -12,12 +12,14 @@ import { createHashHistory } from 'history';
 export const BlogContext = createContext()
 
 const Main = () => {
-
+    const [rootDisplay, setRootDisplay] = useState('d-none')
     const [data, setData] = useState([]);
 
     useEffect(() => {
         getData();
     }, []);
+
+    if (data.length > 0) setRootDisplay('');
 
     async function getData() {
         let url =
@@ -29,14 +31,16 @@ const Main = () => {
         console.log(Data)
         setData(Data)
     }
-   const x = item =>  String(item.description).replace(/\s/g, '-').replace(/\-#.*/, '')
-    return (        
-        <BlogContext.Provider value={data}>
-            <Router history={createHashHistory()}>
-                <Previews path="/" data={data}/>
-                {data.map((article) => <Article path={`/${x(article)}`} {...article}/>)}
-            </Router>
-        </BlogContext.Provider>
+    const x = item => String(item.description).replace(/\s/g, '-').replace(/\-#.*/, '')
+    return (
+        <div class={`${rootDisplay}`}>
+            <BlogContext.Provider value={data}>
+                <Router history={createHashHistory()}>
+                    <Previews path="/" data={data} />
+                    {data.map((article) => <Article path={`/${x(article)}`} {...article} />)}
+                </Router>
+            </BlogContext.Provider>
+        </div>
     )
 }
 

@@ -6,16 +6,12 @@ import { PrevSingle } from "./PrevSingle";
 import { BlogContext } from "../index"
 
 export function Previews() {
-  const [rootDisplay, setRootDisplay] = useState('d-none')
+
   const [featuredData, ...notFeatured] = useContext(BlogContext);
   const returnCorrectEls = (index, pos, el) => (index < pos) && el
 
-    useEffect(() => {    
-      if (featuredData) setRootDisplay('');
-  }, [featuredData]);
-
   return (
-    <div class={`container-fluid px-0 overflow-hidden ${rootDisplay}`}>
+    <div class={`container-fluid px-0 overflow-hidden`}>
       <Nav />
       <div class="row">
         <div class="col-lg-8 offset-lg-2">

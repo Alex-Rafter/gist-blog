@@ -2,9 +2,6 @@ import { h, render, Component, createContext } from "preact";
 import { useContext, useEffect, useState, useRef } from "preact/hooks";
 import { parse } from "preact-parser";
 
-// main();
-
-
 export function PrevSingle({ createdAt, description, url, id, index }) {
   const [data, setData] = useState([]);
   const x = String(description).replace(/\s/g, '-').replace(/\-#.*/, '')
@@ -25,8 +22,7 @@ export function PrevSingle({ createdAt, description, url, id, index }) {
     if (!response.ok) throw new Error("Network response was not OK");
     const json = await response.json();
     const Data = await json.gistBlog;
-    setData(Data)
-    console.log(Data)
+    sessionStorage.setItem("article", JSON.stringify(Data));
   }
 
   return (
