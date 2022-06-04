@@ -1,9 +1,15 @@
-import { h, render, Component, createContext } from "preact";
-import { useContext, useEffect, useState } from "preact/hooks";
+// libs
+import { h } from "preact";
+import { useContext } from "preact/hooks";
+
+// Helpers
+import { BlogContext } from "../index"
+
+// components
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { PrevSingle } from "./PrevSingle";
-import { BlogContext } from "../index"
+
 
 export function Previews() {
 

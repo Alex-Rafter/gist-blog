@@ -1,4 +1,4 @@
-import { h, render, Component, createContext } from "preact";
+import { h } from "preact";
 
 export function Nav() {
     return (

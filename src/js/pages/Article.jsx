@@ -22,7 +22,7 @@ export function Article({ id }) {
     }, []);
 
     const getStoredArticleData = async () => setArticleData(JSON.parse(storedArticle))
-    const getRemoteArticleData = async () => setArticleData(jsonFromSheets(`${apiUrl}${id}`))
+    const getRemoteArticleData = async () => setArticleData(await jsonFromSheets(`${apiUrl}${id}`))
 
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>

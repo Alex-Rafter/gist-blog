@@ -4,6 +4,10 @@ import { h, render, createContext } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { createHashHistory } from 'history';
 
+// My Helpers
+import { jsonFromSheets } from "./helpers/json-from-sheets";
+import { apiUrl } from "./helpers/api-urls";
+
 // Components
 import { Previews } from './components/Previews';
 import { Article } from "./pages/Article";
@@ -19,16 +23,8 @@ const Main = () => {
         getPreviewData();
     }, []);
 
-    async function getPreviewData() {
-        let url =
-            "https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog";
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Network response was not OK");
-        const json = await response.json();
-        const gistBlogData = await json.gistBlog;
-        setPreviewData(gistBlogData)
-    }
-
+    const getPreviewData = async () => setPreviewData(await jsonFromSheets(apiUrl))
+    
     const rmHashTagsAndSlugify = description => String(description).replace(/\s/g, '-').replace(/\-#.*/, '')
 
     return (
@@ -36,7 +32,7 @@ const Main = () => {
             <BlogContext.Provider value={previewData}>
                 <Router history={createHashHistory()}>
                     <Previews path="/" data={previewData} />
-                    {previewData.map(article => <Article path={`/${rmHashTagsAndSlugify(article.description)}`} {...article} />)}
+                    {previewData.map(article => <Article path={`/${rmHashTagsAndSlugify(article.description)}`} id={article.id} />)}
                 </Router>
             </BlogContext.Provider>
         </div>
