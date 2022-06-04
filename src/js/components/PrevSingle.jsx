@@ -8,7 +8,7 @@ import { apiUrl } from "../helpers/api-urls";
 import { rmHashTagsAndSlugify } from "../helpers/rm-hash-tags-slugify";
 
 // Styles
-import "../../css/PrevSingle.css"
+import "../../css/PrevSingle.scss"
 
 export function PrevSingle({ createdAt, description, id }) {
   const [fetched, setFetched] = useState(false);
