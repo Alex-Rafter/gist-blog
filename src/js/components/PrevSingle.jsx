@@ -1,6 +1,5 @@
-import { h, render, Component, createContext } from "preact";
-import { useContext, useEffect, useState, useRef } from "preact/hooks";
-import { parse } from "preact-parser";
+import { h } from "preact";
+import { useEffect, useState, useRef } from "preact/hooks";
 
 export function PrevSingle({ createdAt, description, url, id, index }) {
   const [data, setData] = useState([]);
