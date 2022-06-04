@@ -1,39 +1,34 @@
-import { h, render, Component, createContext } from "preact";
-import { useContext, useEffect, useState } from "preact/hooks";
+// Libs
+import { h } from "preact";
+import { useEffect, useState } from "preact/hooks";
+import { parse } from "preact-parser";
+
+// My Helpers
+import { jsonFromSheets } from "../helpers/json-from-sheets";
+import { apiUrl } from "../helpers/api-urls";
+
+// Components
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
-import { parse } from "preact-parser";
+
 
 export function Article({ id }) {
 
-    const [data, setData] = useState([]);
+    const [articleData, setArticleData] = useState([]);
+    const [storedArticle] = useState(sessionStorage.getItem("article"));
 
     useEffect(() => {
-        getData();
+        (storedArticle !== undefined) ? getStoredArticleData() : getRemoteArticleData();
     }, []);
 
-    async function getData() {
-        const sesh = sessionStorage.getItem("article");
-        if (sesh) {
-            console.log(JSON.parse(sesh))
-            setData(JSON.parse(sesh))
-            return
-        } else {
-            let url =
-                `https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog/${id}`;
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("Network response was not OK");
-            const json = await response.json();
-            const Data = await json.gistBlog;
-            setData(Data)
-        }
-    }
+    const getStoredArticleData = async () => setArticleData(JSON.parse(storedArticle))
+    const getRemoteArticleData = async () => setArticleData(jsonFromSheets(`${apiUrl}${id}`))
 
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>
             <Nav />
             <div class="container">
-                {parse(data.content)}
+                {parse(articleData.content)}
             </div>
             <Footer />
         </div>
