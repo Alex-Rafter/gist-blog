@@ -1,9 +1,13 @@
+// Libs
 import { h } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 
-export function PrevSingle({ createdAt, description, url, id, index }) {
-  const [data, setData] = useState([]);
-  const x = String(description).replace(/\s/g, '-').replace(/\-#.*/, '')
+// My Helpers
+import { jsonFromSheets } from "../helpers/json-from-sheets";
+import { apiUrl } from "../helpers/api-urls";
+import { rmHashTagsAndSlugify } from "../helpers/rm-hash-tags-slugify";
+
+export function PrevSingle({ createdAt, description, id }) {
   const [fetched, setFetched] = useState(false);
   const previousFetchedValue = useRef("");
 
@@ -11,18 +15,11 @@ export function PrevSingle({ createdAt, description, url, id, index }) {
     previousFetchedValue.current = fetched;
   }, [fetched]);
 
-
   async function getBlogItem() {
     if (fetched === true) return
     setFetched(true)
-    let url =
-      `https://api.sheety.co/7016cabf6b37601c93f0bcbd5ec85980/gistsToSheets/gistBlog/${id}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Network response was not OK");
-    const json = await response.json();
-    const Data = await json.gistBlog;
-    if (sessionStorage.getItem("article")) sessionStorage.removeItem("article") 
-    sessionStorage.setItem("article", JSON.stringify(Data));
+    const Data = await jsonFromSheets(`${apiUrl}${id}`)
+    sessionStorage.setItem("article", JSON.stringify(Data))
   }
 
   return (
@@ -30,7 +27,7 @@ export function PrevSingle({ createdAt, description, url, id, index }) {
       <div className="card-body">
         <div className="small text-muted">{createdAt}</div>
         <h2 className="card-title">{description}</h2>
-        <a className="btn btn-primary" href={`/${x}/`}>
+        <a className="btn btn-primary" href={`/${rmHashTagsAndSlugify(description)}/`}>
           Read more →
         </a>
       </div>

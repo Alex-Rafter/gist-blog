@@ -14,15 +14,14 @@ import { Footer } from "../components/Footer";
 
 export function Article({ id }) {
 
-    const [articleData, setArticleData] = useState([]);
-    const [storedArticle] = useState(sessionStorage.getItem("article"));
+    const [articleData, setArticleData] = useState([])
+    const [storedArticle] = useState(sessionStorage.getItem("article"))
+    const getRemoteArticleData = async () => await jsonFromSheets(`${apiUrl}${id}`)
 
     useEffect(() => {
-        (storedArticle !== undefined) ? getStoredArticleData() : getRemoteArticleData();
+        setArticleData((storedArticle !== undefined) ? JSON.parse(storedArticle) : getRemoteArticleData())
     }, []);
-
-    const getStoredArticleData = async () => setArticleData(JSON.parse(storedArticle))
-    const getRemoteArticleData = async () => setArticleData(await jsonFromSheets(`${apiUrl}${id}`))
+    
 
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>

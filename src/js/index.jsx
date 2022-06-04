@@ -7,6 +7,7 @@ import { createHashHistory } from 'history';
 // My Helpers
 import { jsonFromSheets } from "./helpers/json-from-sheets";
 import { apiUrl } from "./helpers/api-urls";
+import { rmHashTagsAndSlugify } from './helpers/rm-hash-tags-slugify';
 
 // Components
 import { Previews } from './components/Previews';
@@ -24,8 +25,6 @@ const Main = () => {
     }, []);
 
     const getPreviewData = async () => setPreviewData(await jsonFromSheets(apiUrl))
-    
-    const rmHashTagsAndSlugify = description => String(description).replace(/\s/g, '-').replace(/\-#.*/, '')
 
     return (
         <div class={(previewData.length > 0) ? '' : 'd-none'}>
