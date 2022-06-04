@@ -7,6 +7,9 @@ import { jsonFromSheets } from "../helpers/json-from-sheets";
 import { apiUrl } from "../helpers/api-urls";
 import { rmHashTagsAndSlugify } from "../helpers/rm-hash-tags-slugify";
 
+// Styles
+import "../../css/PrevSingle.css"
+
 export function PrevSingle({ createdAt, description, id }) {
   const [fetched, setFetched] = useState(false);
   const previousFetchedValue = useRef("");
