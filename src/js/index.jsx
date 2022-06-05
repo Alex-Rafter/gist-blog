@@ -16,6 +16,9 @@ import { Article } from "./pages/Article";
 // Global State
 export const BlogContext = createContext()
 
+// SCSS / Bootstrap
+import '../css/custom.scss'
+
 // Component
 const Main = () => {
     const [previewData, setPreviewData] = useState([]);
