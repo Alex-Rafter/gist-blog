@@ -30,7 +30,7 @@ export function PrevSingle({ createdAt, description, id }) {
       <div className="card-body">
         <div className="small text-muted">{createdAt}</div>
         <h2 className="card-title">{description}</h2>
-        <a className="btn btn-primary" href={`/${rmHashTagsAndSlugify(description)}/`}>
+        <a className="btn btn-dark" href={`/${rmHashTagsAndSlugify(description)}/`}>
           Read more →
         </a>
       </div>
