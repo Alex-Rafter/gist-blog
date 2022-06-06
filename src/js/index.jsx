@@ -18,7 +18,7 @@ export const BlogContext = createContext()
 
 // SCSS / Bootstrap
 import '../css/custom.scss'
-import '../css/body.scss'
+// import '../css/body.scss'
 
 
 // Component
