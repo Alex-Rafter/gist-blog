@@ -34,7 +34,7 @@ export function PrevSingle({ createdAt, description, id }) {
   return (
     <div className="preview mb-4" onMouseOver={(e) => getBlogItem(e)}>
         <a className="text-decoration-none" href={`/${rmHashTagsAndSlugify(description)}/`}>
-          <h2 className="text-dark mb-1 text-lowercase">{descEdited}</h2>
+          <h2 className="h1 fw-light text-dark mb-1 text-lowercase font-monospace">{descEdited}</h2>
         </a>
         <p className="small text-muted">{dateEdited}</p>
     </div>
