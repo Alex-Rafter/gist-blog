@@ -21,14 +21,17 @@ export function Article({ id }) {
     useEffect(() => {
         setArticleData((storedArticle !== undefined) ? JSON.parse(storedArticle) : getRemoteArticleData())
     }, []);
-    
 
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>
             <Nav />
-            <div class="container">
-                {parse(articleData.content)}
-            </div>
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                                {parse(articleData.content)}
+                            </div>
+                    </div>
+                </div>
             <Footer />
         </div>
     );

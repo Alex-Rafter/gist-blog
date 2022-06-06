@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "esbuild ./src/js/index.jsx --bundle --minify --jsx-factory=h --outfile=./build/js/out.js --watch",
-    "watch-script": "node ./scripts/watch.mjs"
+    "watch": "node ./scripts/watch.mjs"
   },
   "repository": {
     "type": "git",

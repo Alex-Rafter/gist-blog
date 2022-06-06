@@ -1,0 +1,11 @@
+.preview {
+    transition: 70ms;
+}
+
+.blurry {
+
+    .preview:not(.filter),
+    nav {
+        filter: blur(1.8px);
+    }
+}

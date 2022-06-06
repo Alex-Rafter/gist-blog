@@ -19,19 +19,15 @@ export function Previews() {
   return (
     <div class={`container-fluid px-0 overflow-hidden`}>
       <Nav />
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <PrevSingle {...featuredData} />
+        <div className="container py-5">
           <div class="row">
-            <div class="col-lg-6">
-              {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
-            </div>
-            <div class="col-lg-6">
-              {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
+            <div class="col-12 col-lg-8 offset-lg-2">
+              <PrevSingle {...featuredData} />
+                  {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
+                  {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
             </div>
           </div>
         </div>
-      </div>
       <Footer />
     </div>
   );
