@@ -1,4 +1,22 @@
-.btn {
-    $colour : green;
-    color:  $colour;
+.preview__anchor :is(h2, p)
+{
+    transition: 50ms;
+}
+.preview__anchor:hover:before {
+    position: absolute;
+    left: -1.4rem;
+    content: '+';
+    height: 100%;
+    display: flex;
+    align-items: center;
+    top: 1.4px;
+/*     color: #953a40; */
+    color: #212529;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.preview__anchor:hover :is(h2, p) {
+    color: #fff !important;
+    background-color: #212529;
 }
