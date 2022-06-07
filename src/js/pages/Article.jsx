@@ -27,7 +27,7 @@ export function Article({ id }) {
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>
             <Nav />
-            <div class="article container py-5">
+            <div class="article container py-4">
                 <div class="row">
                     <div class="col-12 col-lg-8 offset-lg-2">
                                 {parse(articleData.content)}
