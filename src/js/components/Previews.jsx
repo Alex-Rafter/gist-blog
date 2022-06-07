@@ -22,9 +22,7 @@ export function Previews() {
         <div className="container py-5">
           <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2">
-              <PrevSingle {...featuredData} />
-                  {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
-                  {notFeatured.map((item, i) => returnCorrectEls(i, 1, <PrevSingle {...item} />))}
+                   {notFeatured.map((item, i) => returnCorrectEls(i, notFeatured.length, <PrevSingle {...item} />))}
             </div>
           </div>
         </div>
