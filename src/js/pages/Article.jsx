@@ -11,6 +11,8 @@ import { apiUrl } from "../helpers/api-urls";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 
+// CSS
+import '../../css/article.scss'
 
 export function Article({ id }) {
 
@@ -25,7 +27,7 @@ export function Article({ id }) {
     return (
         <div class={`container-fluid px-0 overflow-hidden`}>
             <Nav />
-            <div class="container py-5">
+            <div class="article container py-5">
                 <div class="row">
                     <div class="col-12 col-lg-8 offset-lg-2">
                                 {parse(articleData.content)}
