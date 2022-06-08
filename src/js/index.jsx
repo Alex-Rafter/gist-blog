@@ -16,6 +16,7 @@ import { Article } from './pages/Article'
 
 // SCSS / Bootstrap
 import '../css/custom.scss'
+import '../css/body.scss'
 
 // Global State
 export const BlogContext = createContext()

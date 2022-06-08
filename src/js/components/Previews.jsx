@@ -19,7 +19,7 @@ export function Previews () {
   return (
     <div class='container-fluid px-0 overflow-hidden'>
       <Nav />
-      <div className='container py-5'>
+      <div className='previews container py-5'>
         <div class='row'>
           <div class='col-12 col-lg-8 offset-lg-2'>
             {notFeatured.map((item, i) => returnCorrectEls(i, notFeatured.length, <PrevSingle {...item} />))}
