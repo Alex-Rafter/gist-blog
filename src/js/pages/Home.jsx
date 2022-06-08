@@ -1,9 +1,9 @@
-import { h, render, Component, createContext } from "preact";
-import { useContext, useEffect, useState } from "preact/hooks";
-import { Previews } from "../components/Previews";
+import { h } from 'preact'
+/* @jsx h */
+import { Previews } from '../components/Previews'
 
 export const Home = () => {
-    return (
-        <Previews />
-    )
+  return (
+    <Previews />
+  )
 }

@@ -1,7 +1,8 @@
-import { h } from "preact";
+import { h } from 'preact'
+/* @jsx h */
 
-export function Header() {
-    return (
-        <header class="py-5 mb-0"></header>
-    )
+export function Header () {
+  return (
+    <header class='py-5 mb-0' />
+  )
 }
