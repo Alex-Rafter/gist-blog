@@ -35,7 +35,7 @@ const Main = () => {
   return (
     <div class={(previewData.length > 0) ? '' : 'd-none'}>
       <BlogContext.Provider value={previewData}>
-        <Router history={createHashHistory()}>
+        <Router>
           <Previews path='/' data={previewData} />
           {previewData.map(article => <Article key={article} path={`/${rmHashTagsAndSlugify(article.description)}`} id={article.id} />)}
         </Router>
