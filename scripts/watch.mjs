@@ -7,6 +7,6 @@ await esbuild.build({
   minify: true,
   watch: true,
   jsxFactory: 'h',
-  outfile: './build/js/out.js',
+  outfile: './build/out/out.js',
   plugins: [sassPlugin()]
 }).catch(() => process.exit(1))
