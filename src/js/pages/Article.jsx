@@ -15,13 +15,15 @@ import { Footer } from '../components/Footer'
 // CSS
 import '../../css/article.scss'
 
-export function Article ({ id }) {
+export function Article({ id }) {
   const [articleData, setArticleData] = useState([])
   const [storedArticle] = useState(window.sessionStorage.getItem('article'))
-  const getRemoteArticleData = async () => await jsonFromSheets(`${apiUrl}${id}`)
+  // const getRemoteArticleData = async () => await jsonFromSheets(`${apiUrl}${id}`)
 
   useEffect(() => {
-    setArticleData((storedArticle !== undefined) ? JSON.parse(storedArticle) : getRemoteArticleData())
+    (async () => {
+      setArticleData(await jsonFromSheets(`${apiUrl}${id}`))
+    })()
   }, [])
 
   return (
