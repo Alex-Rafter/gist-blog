@@ -30,20 +30,17 @@ export function PrevSingle ({ createdAt, description, id }) {
     window.sessionStorage.setItem('article', JSON.stringify(Data))
   }
 
-  async function getBlogItemTwo (e) {
-    e.preventDefault()
-    console.log('clicking')
-    const Data = await jsonFromSheets(`${apiUrl}${id}`)
-    console.log('clicking 2')
-    window.sessionStorage.setItem('article', JSON.stringify(Data))
-    console.log('clicking 3')
-    console.log(Data)
+  function rmBlogItem (e) {
+    window.sessionStorage.removeItem('article')
+  }
+
+  async function launchArticle (e) {
     route(`/${rmHashTagsAndSlugify(description)}/`)
   }
 
   return (
-    <div className='preview mb-4 position-relative'>
-      <div className='preview__anchor text-decoration-none' onClick={(e) => getBlogItemTwo(e)}>
+    <div className='preview mb-4 position-relative' onMouseOver={(e) => getBlogItem(e)} onMouseOut={(e) => rmBlogItem(e)}>
+      <div className='preview__anchor text-decoration-none' onClick={(e) => launchArticle(e)}>
         <h2 className='h3 fw-light text-dark mb-1 text-lowercase font-monospace'>{descEdited}</h2>
         <p class='small text-danger h-100 d-flex align-items-center mb-0 position-absolute end-0 top-0'>{dateEdited}</p>
       </div>

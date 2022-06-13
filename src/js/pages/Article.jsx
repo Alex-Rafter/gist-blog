@@ -15,19 +15,20 @@ import { Footer } from '../components/Footer'
 // CSS
 import '../../css/article.scss'
 
-export function Article({ id }) {
+export function Article ({ id }) {
   const [articleData, setArticleData] = useState([])
   const [storedArticle] = useState(window.sessionStorage.getItem('article'))
   const getRemoteArticleData = async () => await jsonFromSheets(`${apiUrl}${id}`)
 
   useEffect(() => {
     (async () => {
-      setArticleData((storedArticle !== undefined) ? JSON.parse(storedArticle) : getRemoteArticleData())
+      if (storedArticle !== null) setArticleData(JSON.parse(storedArticle))
+      if (storedArticle === null) setArticleData(await getRemoteArticleData())
     })()
   }, [])
 
   return (
-    <div class='container-fluid px-0 overflow-hidden'>
+    <div class='container-fluid px-0 overflow-hidden tster'>
       <Nav />
       <div class='article container py-4'>
         <div class='row'>
