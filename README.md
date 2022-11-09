@@ -2,6 +2,9 @@
 
 [Gist Blog MVP](https://monkfish-app-abpdm.ondigitalocean.app/)
 
+## Intro
+Gist blog is a lightweight tool for using Gists as the content for a blog. It works using a simple tag set in the Gist description to add or remove content from the site's database. Using this system articles can be added, updated, or removed from the blog quickly using only GH CLI, or a Gist manager like Lepton.
+
 ## Problem Statement
 I write a lot but my writing is often done on the spur of the moment and fits more in the category of journaling rather than writing planned articles. To this end i often create Gists for little notes, ideas, reflections on my work, and snippets.
 
@@ -19,11 +22,8 @@ Leaving them purely as Gists is convenient but less welcoming to non-devs, lacks
 - No recompiling of a static site or having to switch to another process to have Gists show on the blog.
 - Make it fast to load articles - performance and page weight key design constraints
 
-## Intro
-Gist blog is a lightweight tool for using Gists as the content for a blog. It works using a simple tag set in the Gist description to add or remove content from the site's database. Using this system articles can be added, updated, or removed from the blog quickly using only GH CLI, or a Gist manager like Lepton.
-
 ## Solution 
-The heart of the solution is a Google Apps Script, a markdown parser bundled with esbuild to work on the Apps Script platform, a Google Sheet, and lightweight Front End built with Preact. 
+The heart of the solution is a Google Apps Script, a markdown parser i have bundled with esbuild to work on the Apps Script platform, a Google Sheet, and lightweight Front End built with Preact. 
 The Front End is built so as to require no maintenance and no recompiling as would be necessary with a static site generator. 
 
 ### How does it work
