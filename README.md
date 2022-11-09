@@ -25,7 +25,8 @@ Leaving them purely as Gists is convenient but less welcoming to non-devs, lacks
 
 ## Solution 
 The heart of the solution is a [Google Apps Script](https://developers.google.com/apps-script), [a markdown parser](https://github.com/markedjs/marked) i have bundled with [esbuild](https://esbuild.github.io/) to work on the Apps Script platform, a Google Sheet, and lightweight Front End built with [Preact](https://github.com/preactjs/preact). 
-The Front End is built so as to require no maintenance and no recompiling as would be necessary with a static site generator. 
+
+The Front End is built so as to require no maintenance and no recompiling as would be necessary with a static site generator. The scripts written for the Google Workspace are managed using [Google's Clasp CLI](https://github.com/google/clasp) to allow for local development and version control while using Apps Script.
 
 ### How does it work
 - A scheduled, automated, request is made by Apps Script to the Github API, and a list of all Gists is pulled into the script. 
@@ -35,4 +36,5 @@ The Front End is built so as to require no maintenance and no recompiling as wou
 - The article list page requests a list of all the articles stored in the database and the urls for blog article pages are created dynamically, based on the available blog items stored within the mini-database.
 - To improve user experience, [Quicklink](https://github.com/GoogleChromeLabs/quicklink) is used to prefetch articles while on the list page. This is done via a mouseover event in tandem with a debounce function to reduce server resource usage. 
 - And that's it! The site is stored on free hosting, the back-end is also free to run on G Workspace, and the blog article updates are automated and free of hassle. 
+
 
