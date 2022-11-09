@@ -13,11 +13,11 @@ I wanted to be able to collate the best parts of this writing and publish it in 
 
 While there are a few options out there, they _almost_ fit my needs but are not quite there. [Gistlog](https://gistlog.co/) is so close in terms of convenience but its is very bare-bones and lacks customisation, [Hashnode](https://hashnode.com/) is another really good option, except that the customising some key parts of the blog is a against their TOS.
 
-Leaving them purely as Gists is convenient but less welcoming to non-devs, lacks customisation of ui - eg for pinned categories, and lacks ability to use custom domain.
+Leaving them purely as Gists is convenient but less welcoming to non-devs, lacks customisation of ui, and lacks ability to use a custom domain.
 
 ## Goals 
 - Use raw journal notes stored as Gists as the top of a funnel of content ideas for a personal blog.
-- Make the process of turning Gists into a blog posts on a personal site extremely quick and easy. 
+- Make the process of turning Gists into blog posts on a personal site extremely quick and easy. 
 - Be able to manage Gist-blog articles from the command line, [lepton](https://github.com/hackjutsu/Lepton), or [GH Gist](https://gist.github.com/)
 - Not have to turn to another app or platform to manage - eg copy and pasting into a rich text editor for [WP](https://wordpress.com/) or [Ghost](https://ghost.org/) etc
 - No recompiling of a static site or having to switch to another process to have Gists show on the blog.
