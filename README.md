@@ -2,7 +2,6 @@
 
 [Gist Blog MVP](https://monkfish-app-abpdm.ondigitalocean.app/)
 
-## Intro
 Gist blog is a lightweight tool for using Gists as the content for a blog. It works using a simple tag set in the Gist description to add or remove content from the site's database. Using this system articles can be added, updated, or removed from the blog quickly using only GH CLI, or a Gist manager like [Lepton](https://github.com/hackjutsu/Lepton).
 
 
