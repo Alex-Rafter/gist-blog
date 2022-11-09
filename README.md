@@ -10,7 +10,7 @@ I write a lot but my writing is often done on the spur of the moment and fits mo
 
 I wanted to be able to collate the best parts of this writing and publish it in a way that has the coherence and customisability of any other blog. I wanted to be able to do this quickly, and with minimum fuss, from the Gists themselves.
 
-While there are a few options out there, they _almost_ fit my needs but are not quite there. [Gistlog](https://gistlog.co/) is so close in terms of convenience but its is very bare-bones and lacks customisation, [Hashnode](https://hashnode.com/) is another really good option, except that the customising some key parts of the blog is a against their TOS.
+While there are a few options out there, they _almost_ fit my needs but are not quite there. [Gistlog](https://gistlog.co/) is so close in terms of convenience but its is very bare-bones and lacks customisation. [Hashnode](https://hashnode.com/) is another really good option, except that customising some key parts of the blog like the header is against their TOS.
 
 Leaving them purely as Gists is convenient but less welcoming to non-devs, lacks customisation of ui, and lacks ability to use a custom domain.
 
